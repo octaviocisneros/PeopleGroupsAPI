@@ -51,16 +51,16 @@ public class PeopleGroupsApiController {
 //        }
 //    }
 
-//    @PostConstruct
-//    public void init(){
-//        if (users.count() == 0){
-//            User user = new User();
-//            user.setAddress("123 Testville");
-//            user.setEmail("me@you.com");
-//            user.setUsername("Mike");
-//            user.setSsn("333-444-5522");
-//            user.setWorking(true);
-//            users.save(user);
-//        }
-//    }
+    @PostConstruct
+    public void init(){
+        if (users.count() == 0){
+            User user = new User();
+            user.setAddress("123 Testville");
+            user.setEmail("me@you.com");
+            user.setUsername("Mike");
+            user.setSsn("333-444-5522");
+            user.setWorking(true);
+            users.save(user);
+        }
+    }
 }
