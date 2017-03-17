@@ -41,15 +41,15 @@ public class PeopleGroupsApiController {
     public User getUser(@PathVariable("id") int id) {
         return users.findOne(id);
     }
-    @Configuration
-    public class DatabaseConfig {
-        @Bean
-        @Primary
-        @ConfigurationProperties(prefix = "spring.datasource")
-        public DataSource dataSource() {
-            return DataSourceBuilder.create().build();
-        }
-    }
+//    @Configuration
+//    public class DatabaseConfig {
+//        @Bean
+//        @Primary
+//        @ConfigurationProperties(prefix = "spring.datasource")
+//        public DataSource dataSource() {
+//            return DataSourceBuilder.create().build();
+//        }
+//    }
 
     @PostConstruct
     public void init(){
