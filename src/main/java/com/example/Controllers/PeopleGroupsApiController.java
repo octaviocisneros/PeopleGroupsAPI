@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
+import java.rmi.server.ExportException;
 import java.util.List;
 
 @RestController
@@ -29,8 +30,14 @@ public class PeopleGroupsApiController {
         users.save(user);
     }
     @RequestMapping(path = "/user", method = RequestMethod.PUT)
-    public void updateUser(@RequestBody User user) {
-        users.save(user);
+    public void updateUser(@RequestBody User user) throws Exception{
+
+        if (users.exists(user.getId())){
+            users.save(user);
+        } else {
+            throw new ExportException("User not found. Check user ID.");
+        }
+
     }
     @RequestMapping(path = "/user/{id}", method = RequestMethod.DELETE)
     public void deleteUser(@PathVariable("id") int id) {
